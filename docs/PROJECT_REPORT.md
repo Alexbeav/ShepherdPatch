@@ -18,9 +18,9 @@ The work corrected three major user problems:
 
 The project also produced a keyboard-prompt prototype. This prototype reads live bindings and updates prompts after an in-game remap.
 
-Two focused upstream pull requests contain the stable work. Both requests are open and mergeable.
+Two focused upstream pull requests delivered the first stable work. The maintainer merged both requests.
 
-A second review found six important defects across both requests. Follow-up commits correct these defects and add focused regression tests.
+A second review found six important defects across both requests. Follow-up pull requests #3 and #4 contain the corrections and regression tests.
 
 ## Project goals
 
@@ -57,7 +57,7 @@ The Full Stereo Remaster also remains separate. Its reported compatibility depen
 
 ## Stable runtime work
 
-Runtime pull request: [xowny/ShepherdPatch#1](https://github.com/xowny/ShepherdPatch/pull/1)
+Runtime pull requests: [#1](https://github.com/xowny/ShepherdPatch/pull/1) and [#3](https://github.com/xowny/ShepherdPatch/pull/3)
 
 The runtime work includes these changes:
 
@@ -81,7 +81,7 @@ The same test validated normal movie speed after the Bink separation. Earlier bu
 
 ## Stable configurator work
 
-Configurator pull request: [xowny/ShepherdPatch#2](https://github.com/xowny/ShepherdPatch/pull/2)
+Configurator pull requests: [#2](https://github.com/xowny/ShepherdPatch/pull/2) and [#4](https://github.com/xowny/ShepherdPatch/pull/4)
 
 The configurator work includes these changes:
 
@@ -164,8 +164,10 @@ The game also has fragile focus behavior. After the main menu loads, background 
 
 | Pull request | Head commit | State |
 | --- | --- | --- |
-| Runtime #1 | `0720ab2` | Open, mergeable, and updated after review |
-| Configurator #2 | `bc0e65d` | Open, mergeable, and updated after review |
+| Runtime #1 | `9ac3c6f` | Merged |
+| Configurator #2 | `32912c6` | Merged |
+| Runtime follow-up #3 | `0720ab2` | Open with second-review corrections |
+| Configurator follow-up #4 | `bc0e65d` | Open with second-review corrections |
 
 Automated review found several real problems. Earlier commits corrected memory protection, retry parameters, logging, layout, and error handling.
 
@@ -190,7 +192,7 @@ The menu and Bink results are observations from game tests. The runtime does not
 
 ## Recommended next work
 
-1. Wait for the automated review of commits `0720ab2` and `bc0e65d`.
+1. Wait for the automated review of pull requests #3 and #4.
 2. Build an action matrix for all keyboard prompts.
 3. Submit the keyboard renderer as a separate native pull request.
 4. Record the full controller state before and after a manual input-mode change.

@@ -140,7 +140,7 @@ The configurator follow-up corrected these problems:
 - The Steam checkbox uses the dark application style.
 - Configuration-save errors no longer terminate the application.
 
-Both pull requests passed this review stage. Both requests remained open and mergeable.
+Both pull requests passed this review stage. The maintainer later merged both requests.
 
 ## 2026-08-12: Second merge-gate review
 
@@ -166,7 +166,11 @@ Direct tests now cover missing, locked, and newly created INI files. The configu
 
 The single-file publish did not copy the first external defaults file. Commit `bc0e65d` embeds this file into the configurator executable.
 
-The pull-request text now identifies the frame patch as value validation at a known RVA. It identifies menu and Bink behavior as observed results.
+The original pull requests merged before this second review completed. New pull requests #3 and #4 now contain the follow-up corrections.
+
+Pull request #3 contains the Direct3D and display-profile corrections. Pull request #4 contains the configuration-file and packaging corrections.
+
+The pull-request text identifies the frame patch as value validation at a known RVA. It identifies menu and Bink behavior as observed results.
 
 ## 2026-08-12: Experimental source checkpoint
 
@@ -176,7 +180,7 @@ Commit `16188e0` now preserves this source on `feature/dynamic-keyboard-prompts`
 
 ## Current state
 
-The stable runtime and configurator fixes are pushed. The automated review services must now examine the follow-up commits.
+The first runtime and configurator requests are merged. The automated review services must now examine follow-up requests #3 and #4.
 
 The keyboard renderer works for the tested live remap. It needs broader action coverage before a separate pull request.
 
