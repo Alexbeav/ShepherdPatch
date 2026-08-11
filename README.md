@@ -35,6 +35,11 @@ Nexus Mods: https://www.nexusmods.com/silenthillhomecoming/mods/10
 - `ShepherdPatch.ini` default configuration
 - `CMakeLists.txt` native build entry point
 
+## Documentation
+
+- [Project report](docs/PROJECT_REPORT.md)
+- [Development log](docs/DEVLOG.md)
+
 ## Notes
 
 - This repository contains source code only.
