@@ -160,6 +160,8 @@ Cubic found that the first publication gate used an unbounded spin. A stalled wo
 
 Commit `bcc6693` replaces the spin with an event and a five-second limit. A timeout logs the condition and uses the stock device call.
 
+Cubic marked this finding as addressed. Its final status job remained active after the review comment closed.
+
 The polling path remains available if the early import hook is unavailable. The change does not create a Direct3D probe device.
 
 The review also found three display-profile defects. The follow-up corrected 640x480, renamed 1150x864 to 1152x864, and added 1280x720.
@@ -196,7 +198,9 @@ Commit `16188e0` now preserves this source on `feature/dynamic-keyboard-prompts`
 
 ## Current state
 
-The first runtime and configurator requests are merged. The automated review services must now examine follow-up requests #3 and #4.
+The first runtime and configurator requests are merged. Follow-up requests #3 and #4 are open and mergeable.
+
+Cubic passed configurator request #4. All runtime request #3 findings are addressed, but its Cubic status job is still active.
 
 The keyboard renderer works for the tested live remap. It needs broader action coverage before a separate pull request.
 
