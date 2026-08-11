@@ -165,13 +165,13 @@ The game also has fragile focus behavior. After the main menu loads, background 
 | Pull request | Head commit | State |
 | --- | --- | --- |
 | Runtime #1 | `0720ab2` | Open, mergeable, and updated after review |
-| Configurator #2 | `f43234e` | Open, mergeable, and updated after review |
+| Configurator #2 | `bc0e65d` | Open, mergeable, and updated after review |
 
 Automated review found several real problems. Earlier commits corrected memory protection, retry parameters, logging, layout, and error handling.
 
 The second review found a late Direct3D hook window and three incorrect display profiles. Runtime commit `0720ab2` corrects these defects.
 
-The same review found unsafe configuration reads and an unusable fresh-install path. Configurator commit `f43234e` corrects these defects.
+The same review found unsafe configuration reads and an unusable fresh-install path. Configurator commits `f43234e` and `bc0e65d` correct these defects.
 
 The frame interval uses value validation at a known data RVA. It does not use a signature at that data site.
 
@@ -190,7 +190,7 @@ The menu and Bink results are observations from game tests. The runtime does not
 
 ## Recommended next work
 
-1. Wait for the automated review of commits `0720ab2` and `f43234e`.
+1. Wait for the automated review of commits `0720ab2` and `bc0e65d`.
 2. Build an action matrix for all keyboard prompts.
 3. Submit the keyboard renderer as a separate native pull request.
 4. Record the full controller state before and after a manual input-mode change.

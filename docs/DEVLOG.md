@@ -164,6 +164,8 @@ The same commit clears stale values, preserves save errors, corrects initial DPI
 
 Direct tests now cover missing, locked, and newly created INI files. The configurator suite passed 39 of 39 tests.
 
+The single-file publish did not copy the first external defaults file. Commit `bc0e65d` embeds this file into the configurator executable.
+
 The pull-request text now identifies the frame patch as value validation at a known RVA. It identifies menu and Bink behavior as observed results.
 
 ## 2026-08-12: Experimental source checkpoint
