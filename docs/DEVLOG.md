@@ -150,6 +150,12 @@ The review found a late Direct3D installation window. The engine can call `Direc
 
 Runtime commit `0720ab2` now patches the executable `LoadLibraryA` import during DLL attachment. This hook intercepts the engine load before control returns.
 
+CodeRabbit then found a configuration-publication race in this early path. The first device hook can read `g_config` while the worker writes it.
+
+Commit `823c1a9` adds release and acquire publication. Device creation now waits for immutable configuration data before its first read.
+
+The loader callback does not wait for this data. As a result, configuration loading cannot block the loader path.
+
 The polling path remains available if the early import hook is unavailable. The change does not create a Direct3D probe device.
 
 The review also found three display-profile defects. The follow-up corrected 640x480, renamed 1150x864 to 1152x864, and added 1280x720.
