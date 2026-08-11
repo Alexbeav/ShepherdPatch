@@ -167,7 +167,7 @@ The game also has fragile focus behavior. After the main menu loads, background 
 | Runtime #1 | `9ac3c6f` | Merged |
 | Configurator #2 | `32912c6` | Merged |
 | Runtime follow-up #3 | `823c1a9` | Open with second-review corrections |
-| Configurator follow-up #4 | `bc0e65d` | Open with second-review corrections |
+| Configurator follow-up #4 | `e448e2d` | Open with second-review corrections |
 
 Automated review found several real problems. Earlier commits corrected memory protection, retry parameters, logging, layout, and error handling.
 
@@ -176,6 +176,8 @@ The second review found a late Direct3D hook window and three incorrect display 
 A follow-up review found an early configuration-publication race. Runtime commit `823c1a9` publishes immutable configuration data before the first device hook reads it.
 
 The same review found unsafe configuration reads and an unusable fresh-install path. Configurator commits `f43234e` and `bc0e65d` correct these defects.
+
+Cubic found three follow-up defects in the configurator. Commit `e448e2d` corrects initial DPI timing, inaccessible-file detection, and picker error scope.
 
 The frame interval uses value validation at a known data RVA. It does not use a signature at that data site.
 

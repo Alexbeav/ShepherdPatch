@@ -172,6 +172,12 @@ Direct tests now cover missing, locked, and newly created INI files. The configu
 
 The single-file publish did not copy the first external defaults file. Commit `bc0e65d` embeds this file into the configurator executable.
 
+Cubic then found three remaining configurator defects. Initial DPI layout ran before `XamlRoot` had a reliable scale.
+
+The configuration path also used `File.Exists`, which can report an inaccessible file as missing. A catch-all also hid unrelated errors as picker errors.
+
+Commit `e448e2d` moves the DPI decision to activation. It reports missing and unreadable files separately and limits the picker catch to expected errors.
+
 The original pull requests merged before this second review completed. New pull requests #3 and #4 now contain the follow-up corrections.
 
 Pull request #3 contains the Direct3D and display-profile corrections. Pull request #4 contains the configuration-file and packaging corrections.
