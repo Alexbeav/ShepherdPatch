@@ -84,4 +84,9 @@ bool ShouldSuppressLostDeviceShutdown(const LostDeviceRecoveryState& state,
     return state.deviceLossObserved && !state.userInitiatedClose &&
            IsLostDeviceRecoveryActive(state, nowTick);
 }
+
+bool ShouldForwardWindowActivation(bool keepRenderingWhenUnfocused, bool activating)
+{
+    return activating || !keepRenderingWhenUnfocused;
+}
 } // namespace shh

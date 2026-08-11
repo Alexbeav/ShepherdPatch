@@ -9,6 +9,11 @@ bool ShouldTraceBinkPlayback(std::string_view moviePath)
     return ShouldApplyMenuMovieWaitFix(moviePath);
 }
 
+bool ShouldAdvanceBinkFrame(bool frameRateUnlockEnabled, int binkWaitResult)
+{
+    return !frameRateUnlockEnabled || binkWaitResult == 0;
+}
+
 std::string_view GetBinkTrackedFunctionName(BinkTrackedFunction function)
 {
     switch (function)

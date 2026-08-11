@@ -11,6 +11,8 @@ TEST_CASE(ParseConfigReadsBoolAndIntegerOverrides)
         "EnableDpiAwareness = false\n"
         "EnableUltrawideFovFix = false\n"
         "EnableHighResolutionUiFix = false\n"
+        "EnableKeyboardPromptLabels = true\n"
+        "EnableDynamicInputDeviceSwitching = true\n"
         "ForceBorderless = false\n"
         "RetryResetInWindowedMode = true\n"
         "EnableHighPrecisionTiming = false\n"
@@ -31,6 +33,7 @@ TEST_CASE(ParseConfigReadsBoolAndIntegerOverrides)
         "ReduceBorderlessPresentStutter = false\n"
         "ReduceMenuMovieStutter = false\n"
         "EnableFlipExSwapEffect = false\n"
+        "KeepRenderingWhenUnfocused = true\n"
         "LegacyGraphicsRetryDelayMilliseconds = 250\n"
         "LegacyThreadTerminateGraceMilliseconds = 400\n"
         "RawMouseSensitivity = 1.5\n"
@@ -50,6 +53,8 @@ TEST_CASE(ParseConfigReadsBoolAndIntegerOverrides)
     CHECK_TRUE(!config.enableDpiAwareness);
     CHECK_TRUE(!config.enableUltrawideFovFix);
     CHECK_TRUE(!config.enableHighResolutionUiFix);
+    CHECK_TRUE(config.enableKeyboardPromptLabels);
+    CHECK_TRUE(config.enableDynamicInputDeviceSwitching);
     CHECK_TRUE(!config.forceBorderless);
     CHECK_TRUE(config.retryResetInWindowedMode);
     CHECK_TRUE(!config.enableHighPrecisionTiming);
@@ -70,6 +75,7 @@ TEST_CASE(ParseConfigReadsBoolAndIntegerOverrides)
     CHECK_TRUE(!config.reduceBorderlessPresentStutter);
     CHECK_TRUE(!config.reduceMenuMovieStutter);
     CHECK_TRUE(!config.enableFlipExSwapEffect);
+    CHECK_TRUE(config.keepRenderingWhenUnfocused);
     CHECK_EQ(config.legacyGraphicsRetryDelayMilliseconds, 250u);
     CHECK_EQ(config.legacyThreadTerminateGraceMilliseconds, 400u);
     CHECK_EQ(config.rawMouseSensitivity, 1.5f);
@@ -98,6 +104,8 @@ TEST_CASE(ParseConfigUsesConservativeDefaultsWhenFileIsMissing)
     CHECK_TRUE(config.enableDpiAwareness);
     CHECK_TRUE(config.enableUltrawideFovFix);
     CHECK_TRUE(config.enableHighResolutionUiFix);
+    CHECK_TRUE(!config.enableKeyboardPromptLabels);
+    CHECK_TRUE(!config.enableDynamicInputDeviceSwitching);
     CHECK_TRUE(!config.forceBorderless);
     CHECK_TRUE(config.retryResetInWindowedMode);
     CHECK_TRUE(config.enableHighPrecisionTiming);
@@ -115,9 +123,10 @@ TEST_CASE(ParseConfigUsesConservativeDefaultsWhenFileIsMissing)
     CHECK_TRUE(config.hardenLegacyGraphicsRecovery);
     CHECK_TRUE(config.hardenLegacyThreadWrapper);
     CHECK_TRUE(config.hardenDirectInputMouseDevice);
-    CHECK_TRUE(config.reduceBorderlessPresentStutter);
+    CHECK_TRUE(!config.reduceBorderlessPresentStutter);
     CHECK_TRUE(config.reduceMenuMovieStutter);
     CHECK_TRUE(config.enableFlipExSwapEffect);
+    CHECK_TRUE(!config.keepRenderingWhenUnfocused);
     CHECK_EQ(config.legacyGraphicsRetryDelayMilliseconds, 100u);
     CHECK_EQ(config.legacyThreadTerminateGraceMilliseconds, 250u);
     CHECK_EQ(config.rawMouseSensitivity, 1.0f);

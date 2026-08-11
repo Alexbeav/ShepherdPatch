@@ -38,6 +38,9 @@ std::string FormatModuleRelativeAddress(std::uintptr_t address, std::uintptr_t m
                                         std::string_view moduleLabel);
 LegacyThreadRole ClassifyLegacyThreadTag(std::string_view tagText);
 std::string_view DescribeLegacyThreadRole(LegacyThreadRole role);
+bool ShouldPreserveStockLoadingScreenCadence(std::uint32_t currentThreadId,
+                                             std::uint32_t loadingScreenThreadId,
+                                             bool gameplayUpdateObserved);
 
 std::string DescribeLegacyThreadWrapperSnapshot(const LegacyThreadWrapperSnapshot& snapshot,
                                                 std::uintptr_t engineModuleBase);

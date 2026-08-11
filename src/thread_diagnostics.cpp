@@ -63,6 +63,14 @@ std::string_view DescribeLegacyThreadRole(LegacyThreadRole role)
     }
 }
 
+bool ShouldPreserveStockLoadingScreenCadence(std::uint32_t currentThreadId,
+                                             std::uint32_t loadingScreenThreadId,
+                                             bool gameplayUpdateObserved)
+{
+    return !gameplayUpdateObserved && loadingScreenThreadId != 0 &&
+           currentThreadId == loadingScreenThreadId;
+}
+
 std::string DescribeLegacyThreadWrapperSnapshot(const LegacyThreadWrapperSnapshot& snapshot,
                                                 std::uintptr_t engineModuleBase)
 {

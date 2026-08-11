@@ -82,3 +82,11 @@ TEST_CASE(DescribeLegacyThreadRoleReturnsStableLogLabels)
     CHECK_EQ(shh::DescribeLegacyThreadRole(shh::LegacyThreadRole::Unknown),
              std::string_view("Unknown"));
 }
+
+TEST_CASE(LoadingScreenCadenceIsPreservedUntilGameplayStarts)
+{
+    CHECK_TRUE(shh::ShouldPreserveStockLoadingScreenCadence(42u, 42u, false));
+    CHECK_TRUE(!shh::ShouldPreserveStockLoadingScreenCadence(41u, 42u, false));
+    CHECK_TRUE(!shh::ShouldPreserveStockLoadingScreenCadence(42u, 0u, false));
+    CHECK_TRUE(!shh::ShouldPreserveStockLoadingScreenCadence(42u, 42u, true));
+}

@@ -310,6 +310,17 @@
                                             </StackPanel>
                                         </Grid>
 
+                                        <Grid x:Name="DisplayRowFive" Style="{StaticResource SettingRowGridStyle}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="220" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel>
+                                                <CheckBox x:Name="KeepRenderingWhenUnfocusedToggle" Click="AnySettingChanged" Content="Render while unfocused" Style="{StaticResource HomecomingCheckBoxStyle}" />
+                                                <TextBlock Style="{StaticResource SettingDescriptionTextStyle}" Text="Keeps video rendering when another window has focus. Input remains foreground-only." />
+                                            </StackPanel>
+                                        </Grid>
+
                                         <Grid x:Name="DisplayValuesGrid" Style="{StaticResource ValuesGridStyle}">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
@@ -353,7 +364,7 @@
                                                 Grid.Column="1"
                                                 HorizontalAlignment="Right"
                                                 Style="{StaticResource SectionCaptionTextStyle}"
-                                                Text="Raw mouse, invert, DirectInput cleanup" />
+                                                Text="Raw mouse, device switching, DirectInput cleanup" />
                                         </Grid>
 
                                         <Grid x:Name="InputRowOne" Style="{StaticResource SettingRowGridStyle}">
@@ -379,6 +390,10 @@
                                             <StackPanel>
                                                 <CheckBox x:Name="HardenDirectInputMouseDeviceToggle" Click="AnySettingChanged" Content="Harden DirectInput mouse device (Experimental)" Style="{StaticResource HomecomingCheckBoxStyle}" />
                                                 <TextBlock Style="{StaticResource SettingDescriptionTextStyle}" Text="Experimental. Normalizes mouse reacquire behavior during focus changes and alt-tab." />
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" HorizontalAlignment="Right" Width="220">
+                                                <CheckBox x:Name="EnableDynamicInputDeviceSwitchingToggle" Click="AnySettingChanged" Content="Automatic input device switching (Experimental)" HorizontalAlignment="Right" Style="{StaticResource HomecomingCheckBoxStyle}" />
+                                                <TextBlock Style="{StaticResource SettingDescriptionTextStyle}" Text="Experimental. Uses the last active keyboard, mouse, or XInput controller without visiting Options." TextAlignment="Right" />
                                             </StackPanel>
                                         </Grid>
 

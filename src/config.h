@@ -12,6 +12,8 @@ struct Config
     bool enableDpiAwareness = true;
     bool enableUltrawideFovFix = true;
     bool enableHighResolutionUiFix = true;
+    bool enableKeyboardPromptLabels = false;
+    bool enableDynamicInputDeviceSwitching = false;
     bool forceBorderless = false;
     bool retryResetInWindowedMode = true;
     bool enableHighPrecisionTiming = true;
@@ -31,9 +33,10 @@ struct Config
     bool hardenLegacyGraphicsRecovery = true;
     bool hardenLegacyThreadWrapper = true;
     bool hardenDirectInputMouseDevice = true;
-    bool reduceBorderlessPresentStutter = true;
+    bool reduceBorderlessPresentStutter = false;
     bool reduceMenuMovieStutter = true;
     bool enableFlipExSwapEffect = true;
+    bool keepRenderingWhenUnfocused = false;
     std::uint32_t legacyGraphicsRetryDelayMilliseconds = 100;
     std::uint32_t legacyThreadTerminateGraceMilliseconds = 250;
     float presentWakeLeadMilliseconds = 0.0f;

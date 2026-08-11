@@ -57,3 +57,10 @@ TEST_CASE(NoteLostDeviceRecoveryWindowDoesNotShortenActiveDeadline)
     CHECK_EQ(state.recoveryDeadlineTick, initialDeadline);
     CHECK_TRUE(!state.deviceLossObserved);
 }
+
+TEST_CASE(BackgroundRenderingSuppressesOnlyDeactivationNotification)
+{
+    CHECK_TRUE(!shh::ShouldForwardWindowActivation(true, false));
+    CHECK_TRUE(shh::ShouldForwardWindowActivation(true, true));
+    CHECK_TRUE(shh::ShouldForwardWindowActivation(false, false));
+}

@@ -21,4 +21,5 @@ void NoteUserInitiatedClose(LostDeviceRecoveryState* state);
 void ClearLostDeviceRecovery(LostDeviceRecoveryState* state);
 bool ShouldSuppressLostDeviceShutdown(const LostDeviceRecoveryState& state,
                                       std::uint32_t nowTick);
+bool ShouldForwardWindowActivation(bool keepRenderingWhenUnfocused, bool activating);
 } // namespace shh

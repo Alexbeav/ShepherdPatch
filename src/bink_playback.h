@@ -13,5 +13,6 @@ enum class BinkTrackedFunction
 };
 
 bool ShouldTraceBinkPlayback(std::string_view moviePath);
+bool ShouldAdvanceBinkFrame(bool frameRateUnlockEnabled, int binkWaitResult);
 std::string_view GetBinkTrackedFunctionName(BinkTrackedFunction function);
 } // namespace shh

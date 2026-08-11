@@ -82,6 +82,7 @@ public sealed partial class MainWindow : Window
             new PairedSettingRow(DisplayResolutionUiRow),
             new PairedSettingRow(DisplayRowThree),
             new PairedSettingRow(DisplayRowFour),
+            new PairedSettingRow(DisplayRowFive),
             new PairedSettingRow(InputRowOne),
             new PairedSettingRow(InputRowTwo),
             new PairedSettingRow(FrameRateRowOne),
@@ -139,6 +140,7 @@ public sealed partial class MainWindow : Window
             SetToggle(EnableHudViewportClampToggle, document, "EnableHudViewportClamp");
             SetToggle(ReduceBorderlessPresentStutterToggle, document, "ReduceBorderlessPresentStutter");
             SetToggle(EnableFlipExSwapEffectToggle, document, "EnableFlipExSwapEffect");
+            SetToggle(KeepRenderingWhenUnfocusedToggle, document, "KeepRenderingWhenUnfocused");
             SetNumber(FallbackWidthBox, document, "FallbackWidth", 0.0);
             SetNumber(FallbackHeightBox, document, "FallbackHeight", 0.0);
             SetNumber(HudViewportAspectRatioBox, document, "HudViewportAspectRatio", 16.0 / 9.0);
@@ -147,6 +149,7 @@ public sealed partial class MainWindow : Window
             SetToggle(EnableRawMouseInputToggle, document, "EnableRawMouseInput");
             SetToggle(InvertRawMouseYToggle, document, "InvertRawMouseY");
             SetToggle(HardenDirectInputMouseDeviceToggle, document, "HardenDirectInputMouseDevice");
+            SetToggle(EnableDynamicInputDeviceSwitchingToggle, document, "EnableDynamicInputDeviceSwitching");
             SetNumber(RawMouseSensitivityBox, document, "RawMouseSensitivity", 1.0);
 
             SetToggle(EnableFrameRateUnlockToggle, document, "EnableFrameRateUnlock");
@@ -215,6 +218,7 @@ public sealed partial class MainWindow : Window
         SetValue(document, "EnableHudViewportClamp", EnableHudViewportClampToggle.IsChecked == true);
         SetValue(document, "ReduceBorderlessPresentStutter", ReduceBorderlessPresentStutterToggle.IsChecked == true);
         SetValue(document, "EnableFlipExSwapEffect", EnableFlipExSwapEffectToggle.IsChecked == true);
+        SetValue(document, "KeepRenderingWhenUnfocused", KeepRenderingWhenUnfocusedToggle.IsChecked == true);
         SetValue(document, "FallbackWidth", FallbackWidthBox.Value, 0);
         SetValue(document, "FallbackHeight", FallbackHeightBox.Value, 0);
         SetValue(document, "HudViewportAspectRatio", HudViewportAspectRatioBox.Value);
@@ -223,6 +227,7 @@ public sealed partial class MainWindow : Window
         SetValue(document, "EnableRawMouseInput", EnableRawMouseInputToggle.IsChecked == true);
         SetValue(document, "InvertRawMouseY", InvertRawMouseYToggle.IsChecked == true);
         SetValue(document, "HardenDirectInputMouseDevice", HardenDirectInputMouseDeviceToggle.IsChecked == true);
+        SetValue(document, "EnableDynamicInputDeviceSwitching", EnableDynamicInputDeviceSwitchingToggle.IsChecked == true);
         SetValue(document, "RawMouseSensitivity", RawMouseSensitivityBox.Value);
 
         SetValue(document, "EnableFrameRateUnlock", EnableFrameRateUnlockToggle.IsChecked == true);
@@ -371,6 +376,7 @@ public sealed partial class MainWindow : Window
         DisplayRowOne.Visibility = advancedVisibility;
         DisplayRowThree.Visibility = advancedVisibility;
         DisplayRowFour.Visibility = advancedVisibility;
+        DisplayRowFive.Visibility = advancedVisibility;
         DisplayHudAspectPanel.Visibility = advancedVisibility;
         DisplayFallbackRefreshPanel.Visibility = advancedVisibility;
         InputRowTwo.Visibility = advancedVisibility;

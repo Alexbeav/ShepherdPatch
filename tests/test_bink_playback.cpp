@@ -22,3 +22,10 @@ TEST_CASE(GetBinkTrackedFunctionNameUsesStableLabels)
              "BinkNextFrame");
     CHECK_EQ(shh::GetBinkTrackedFunctionName(shh::BinkTrackedFunction::Pause), "BinkPause");
 }
+
+TEST_CASE(BinkFrameAdvanceUsesMovieClockWhenFrameRateIsUnlocked)
+{
+    CHECK_TRUE(shh::ShouldAdvanceBinkFrame(true, 0));
+    CHECK_TRUE(!shh::ShouldAdvanceBinkFrame(true, 1));
+    CHECK_TRUE(shh::ShouldAdvanceBinkFrame(false, 1));
+}

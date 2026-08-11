@@ -123,6 +123,16 @@ Config ParseConfig(std::string_view text)
             config.enableHighResolutionUiFix =
                 ParseBoolValue(value, config.enableHighResolutionUiFix);
         }
+        else if (key == "EnableKeyboardPromptLabels")
+        {
+            config.enableKeyboardPromptLabels =
+                ParseBoolValue(value, config.enableKeyboardPromptLabels);
+        }
+        else if (key == "EnableDynamicInputDeviceSwitching")
+        {
+            config.enableDynamicInputDeviceSwitching =
+                ParseBoolValue(value, config.enableDynamicInputDeviceSwitching);
+        }
         else if (key == "ForceBorderless")
         {
             config.forceBorderless = ParseBoolValue(value, config.forceBorderless);
@@ -231,6 +241,11 @@ Config ParseConfig(std::string_view text)
         {
             config.enableFlipExSwapEffect =
                 ParseBoolValue(value, config.enableFlipExSwapEffect);
+        }
+        else if (key == "KeepRenderingWhenUnfocused")
+        {
+            config.keepRenderingWhenUnfocused =
+                ParseBoolValue(value, config.keepRenderingWhenUnfocused);
         }
         else if (key == "LegacyGraphicsRetryDelayMilliseconds")
         {

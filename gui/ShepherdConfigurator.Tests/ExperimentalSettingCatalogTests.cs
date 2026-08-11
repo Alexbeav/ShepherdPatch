@@ -9,6 +9,7 @@ public sealed class ExperimentalSettingCatalogTests
     {
         Assert.True(ExperimentalSettingCatalog.IsExperimental("ReduceMenuMovieStutter"));
         Assert.True(ExperimentalSettingCatalog.IsExperimental("HardenLegacyThreadWrapper"));
+        Assert.True(ExperimentalSettingCatalog.IsExperimental("EnableDynamicInputDeviceSwitching"));
         Assert.False(ExperimentalSettingCatalog.IsExperimental("EnableFrameRateUnlock"));
     }
 
