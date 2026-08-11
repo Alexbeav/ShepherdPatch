@@ -166,7 +166,7 @@ The game also has fragile focus behavior. After the main menu loads, background 
 | --- | --- | --- |
 | Runtime #1 | `9ac3c6f` | Merged |
 | Configurator #2 | `32912c6` | Merged |
-| Runtime follow-up #3 | `bcc6693` | Open and mergeable, all findings addressed, Cubic status still active |
+| Runtime follow-up #3 | `bcc6693` | Open and mergeable, Cubic passed |
 | Configurator follow-up #4 | `e448e2d` | Open and mergeable, Cubic passed |
 
 Automated review found several real problems. Earlier commits corrected memory protection, retry parameters, logging, layout, and error handling.
@@ -198,15 +198,14 @@ The menu and Bink results are observations from game tests. The runtime does not
 
 ## Recommended next work
 
-1. Wait for the Cubic status job on pull request #3 to close.
-2. Ask the maintainer to merge pull requests #3 and #4.
-3. Build an action matrix for all keyboard prompts.
-4. Submit the keyboard renderer as a separate native pull request.
-5. Record the full controller state before and after a manual input-mode change.
-6. Replace the single-byte controller experiment with the validated state transition.
-7. Run at least 50 launch, load, exit, and relaunch cycles.
-8. Test 120 FPS and 144 FPS with movies, combat, physics, and QTE sequences.
-9. Publish a preview package after the laptop validation is complete.
+1. Ask the maintainer to merge pull requests #3 and #4.
+2. Build an action matrix for all keyboard prompts.
+3. Submit the keyboard renderer as a separate native pull request.
+4. Record the full controller state before and after a manual input-mode change.
+5. Replace the single-byte controller experiment with the validated state transition.
+6. Run at least 50 launch, load, exit, and relaunch cycles.
+7. Test 120 FPS and 144 FPS with movies, combat, physics, and QTE sequences.
+8. Publish a preview package after the laptop validation is complete.
 
 ## Build commands
 
