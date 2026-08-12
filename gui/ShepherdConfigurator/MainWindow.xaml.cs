@@ -61,7 +61,7 @@ public sealed partial class MainWindow : Window
         _cards =
         [
             new CardDefinition(DisplayCard, "Display", ["display", "resolution", "borderless", "dpi", "ultrawide", "hud", "refresh", "flip"], 7),
-            new CardDefinition(InputCard, "Input", ["input", "mouse", "raw", "invert", "directinput", "sensitivity"], 4),
+            new CardDefinition(InputCard, "Input", ["input", "mouse", "raw", "invert", "directinput", "sensitivity", "keyboard", "prompt", "label", "keybind"], 5),
             new CardDefinition(FrameRateCard, "Frame Rate", ["frame", "fps", "vsync", "presentation", "wake", "rate"], 5),
             new CardDefinition(StabilityCard, "Stability", ["stability", "timing", "sleep", "timer", "crash", "logging", "mmcss", "power"], 6),
             new CardDefinition(AdvancedCard, "Advanced", ["advanced", "legacy", "thread", "pointer", "floating", "graphics", "timer"], 5),
@@ -175,6 +175,7 @@ public sealed partial class MainWindow : Window
             SetToggle(EnableRawMouseInputToggle, document, "EnableRawMouseInput");
             SetToggle(InvertRawMouseYToggle, document, "InvertRawMouseY");
             SetToggle(HardenDirectInputMouseDeviceToggle, document, "HardenDirectInputMouseDevice");
+            SetToggle(EnableKeyboardPromptLabelsToggle, document, "EnableKeyboardPromptLabels");
             SetNumber(RawMouseSensitivityBox, document, "RawMouseSensitivity", 1.0);
 
             SetToggle(EnableFrameRateUnlockToggle, document, "EnableFrameRateUnlock");
@@ -251,6 +252,7 @@ public sealed partial class MainWindow : Window
         SetValue(document, "EnableRawMouseInput", EnableRawMouseInputToggle.IsChecked == true);
         SetValue(document, "InvertRawMouseY", InvertRawMouseYToggle.IsChecked == true);
         SetValue(document, "HardenDirectInputMouseDevice", HardenDirectInputMouseDeviceToggle.IsChecked == true);
+        SetValue(document, "EnableKeyboardPromptLabels", EnableKeyboardPromptLabelsToggle.IsChecked == true);
         SetFiniteValue(document, "RawMouseSensitivity", RawMouseSensitivityBox.Value, 1.0);
 
         SetValue(document, "EnableFrameRateUnlock", EnableFrameRateUnlockToggle.IsChecked == true);

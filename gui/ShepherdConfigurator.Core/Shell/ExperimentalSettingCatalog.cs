@@ -11,7 +11,8 @@ public static class ExperimentalSettingCatalog
     {
         ["Input"] =
         [
-            "HardenDirectInputMouseDevice"
+            "HardenDirectInputMouseDevice",
+            "EnableKeyboardPromptLabels"
         ],
         ["Advanced"] =
         [
