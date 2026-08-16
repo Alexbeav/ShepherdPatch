@@ -3841,13 +3841,26 @@ HRESULT STDMETHODCALLTYPE HookedCreateDevice(IDirect3D9* direct3d, UINT adapter,
         return E_FAIL;
     }
 
+    // Homecoming uses one D3D9 device from gameplay and loading threads. This
+    // protection is required even if configuration publication times out.
+    const DWORD protectedBehaviorFlags = behaviorFlags | D3DCREATE_MULTITHREADED;
+    if (protectedBehaviorFlags != behaviorFlags)
+    {
+        std::ostringstream message;
+        message << "CreateDevice enabled D3D multithread protection: flags=0x"
+                << std::hex << behaviorFlags << "->0x" << protectedBehaviorFlags;
+        Log(message.str());
+    }
+
     // Configuration publication occurs before the worker loads any additional
     // modules. Keep this wait out of the LoadLibraryA callback and loader path.
     if (!WaitForPublishedRuntimeConfiguration())
     {
-        Log("Runtime configuration was unavailable before CreateDevice; using the stock call.");
+        Log("Runtime configuration was unavailable before CreateDevice; using unmodified "
+            "presentation parameters.");
         return g_originalCreateDevice(direct3d, adapter, deviceType, focusWindow,
-                                      behaviorFlags, presentationParameters, returnedDevice);
+                                      protectedBehaviorFlags, presentationParameters,
+                                      returnedDevice);
     }
 
     D3DPRESENT_PARAMETERS workingParams = {};
@@ -3878,18 +3891,6 @@ HRESULT STDMETHODCALLTYPE HookedCreateDevice(IDirect3D9* direct3d, UINT adapter,
                 << FormatPresentationInterval(original.presentationInterval) << "->"
                 << FormatPresentationInterval(sanitized.presentationInterval)
                 << ", caller=" << FormatAddress(caller);
-        Log(message.str());
-    }
-
-    // Homecoming hands the same D3D9 device between its gameplay and loading
-    // threads. Without this flag the D3D9 runtime does not serialize those
-    // calls, which can corrupt driver state during level transitions.
-    const DWORD protectedBehaviorFlags = behaviorFlags | D3DCREATE_MULTITHREADED;
-    if (protectedBehaviorFlags != behaviorFlags)
-    {
-        std::ostringstream message;
-        message << "CreateDevice enabled D3D multithread protection: flags=0x"
-                << std::hex << behaviorFlags << "->0x" << protectedBehaviorFlags;
         Log(message.str());
     }
 
@@ -4004,11 +4005,21 @@ HRESULT STDMETHODCALLTYPE HookedCreateDeviceEx(IDirect3D9Ex* direct3d, UINT adap
         return E_FAIL;
     }
 
+    const DWORD protectedBehaviorFlags = behaviorFlags | D3DCREATE_MULTITHREADED;
+    if (protectedBehaviorFlags != behaviorFlags)
+    {
+        std::ostringstream message;
+        message << "CreateDeviceEx enabled D3D multithread protection: flags=0x"
+                << std::hex << behaviorFlags << "->0x" << protectedBehaviorFlags;
+        Log(message.str());
+    }
+
     if (!WaitForPublishedRuntimeConfiguration())
     {
-        Log("Runtime configuration was unavailable before CreateDeviceEx; using the stock call.");
+        Log("Runtime configuration was unavailable before CreateDeviceEx; using unmodified "
+            "presentation parameters.");
         return g_originalCreateDeviceEx(direct3d, adapter, deviceType, focusWindow,
-                                        behaviorFlags, presentationParameters,
+                                        protectedBehaviorFlags, presentationParameters,
                                         fullscreenDisplayMode, returnedDevice);
     }
 
@@ -4038,15 +4049,6 @@ HRESULT STDMETHODCALLTYPE HookedCreateDeviceEx(IDirect3D9Ex* direct3d, UINT adap
                 << FormatPresentationInterval(original.presentationInterval) << "->"
                 << FormatPresentationInterval(sanitized.presentationInterval)
                 << ", caller=" << FormatAddress(caller);
-        Log(message.str());
-    }
-
-    const DWORD protectedBehaviorFlags = behaviorFlags | D3DCREATE_MULTITHREADED;
-    if (protectedBehaviorFlags != behaviorFlags)
-    {
-        std::ostringstream message;
-        message << "CreateDeviceEx enabled D3D multithread protection: flags=0x"
-                << std::hex << behaviorFlags << "->0x" << protectedBehaviorFlags;
         Log(message.str());
     }
 
